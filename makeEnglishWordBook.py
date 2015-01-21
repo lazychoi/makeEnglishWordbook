@@ -106,6 +106,8 @@ class moveToDicCommand(sublime_plugin.TextCommand):
 		cursor_position = self.view.sel()[0]
 		current_line = self.view.line(cursor_position)
 		current_string = self.view.substr(current_line)
+		sublime.set_clipboard(current_string)
+		
 		pattern = re.compile(r'^.+\t')
 		keyword_object = pattern.match(current_string)
 		keyword = '^' + keyword_object.group()
