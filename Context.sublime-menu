@@ -1,0 +1,12 @@
+[
+	{
+	    "id" : "makeEngWordbook",
+	    "caption" : "making english wordbook",
+	    "command" : "make_eng_wordbook"
+	},
+	{
+	    "id" : "copyToDic",
+	    "caption" : "Copy To Dic",
+	    "command" : "copy_to_dic"
+	}
+]

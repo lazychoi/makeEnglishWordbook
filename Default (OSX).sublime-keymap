@@ -1,0 +1,11 @@
+[
+	{ 
+		"keys": ["shift+super+j"], "command": "make_eng_wordbook"
+	}, 
+	{
+		"keys": ["shift+super+i"], "command": "copy_to_dic"
+	}, 
+	{
+		"keys": ["shift+super+m"], "command": "move_to_dic"
+	}
+]
