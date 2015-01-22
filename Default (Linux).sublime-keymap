@@ -7,5 +7,8 @@
 	}, 
 	{
 		"keys": ["shift+alt+m"], "command": "move_to_dic"
+	}, 
+	{
+		"keys": ["shift+alt+k"], "command": "lookup_naver_dic"
 	}
 ]

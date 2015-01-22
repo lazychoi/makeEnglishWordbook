@@ -1,4 +1,23 @@
-import sublime, sublime_plugin, re
+import sublime, sublime_plugin, re, webbrowser
+
+def getKeyword(self, cursor):
+
+	current_line_region = self.view.line(cursor)
+	current_line_string = self.view.substr(current_line_region).strip()
+
+	# string in region at cursor position(one word or more)
+	# begin and end are the region where searched line is inserted
+	if cursor.end() - cursor.begin() == 0:
+		word_region = self.view.word(cursor)
+		word_s = self.view.substr(word_region).strip()
+		region_begin = word_region.a
+		region_end = word_region.b
+	else:
+		word_s = self.view.substr(cursor).strip()
+		region_begin = cursor.begin()
+		region_end = cursor.end()
+
+	return word_s, current_line_string, current_line_region, region_begin, region_end
 
 class makeEngWordbookCommand(sublime_plugin.TextCommand):
 
@@ -43,17 +62,7 @@ class makeEngWordbookCommand(sublime_plugin.TextCommand):
 		# region at cursor
 		cursor_position = self.view.sel()[0]
 
-		# string in region at cursor position(one word or more)
-		# begin and end are the region where searched line is inserted
-		if cursor_position.end() - cursor_position.begin() == 0:
-			word_region = self.view.word(cursor_position)
-			word_s = self.view.substr(word_region).strip()
-			begin = word_region.a
-			end = word_region.b
-		else:
-			word_s = self.view.substr(cursor_position).strip()
-			begin = cursor_position.begin()
-			end = cursor_position.end()
+		word_s, current_line_string, current_line_region, begin, end = getKeyword(self, cursor_position)
 
 		# preventing too much words from being founded
 		word_s = "^" + word_s
@@ -131,6 +140,15 @@ class moveToDicCommand(sublime_plugin.TextCommand):
 				else:
 					sublime.message_dialog("찾는 단어가 없습니다.\n The keyword is not found.")
 					
-				# print("keyword_position is", keyword_position)
-				# print("vector position is", vector)
+class lookupNaverDic(sublime_plugin.TextCommand):
 
+	def run(self, edit):	
+
+		word_s_list = getKeyword(self, self.view.sel()[0])[0].strip().split()
+		word_s = "%10".join(word_s_list)
+
+		naverDicAddress = "http://endic.naver.com/search.nhn?query="
+		url = naverDicAddress + word_s
+
+		webbrowser.open(url, new=0, autoraise=True)
+		

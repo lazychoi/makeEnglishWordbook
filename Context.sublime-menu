@@ -6,7 +6,17 @@
 	},
 	{
 	    "id" : "copyToDic",
-	    "caption" : "Copy To Dic",
+	    "caption" : "copy to dic",
 	    "command" : "copy_to_dic"
+	},
+	{
+	    "id" : "moveToDic",
+	    "caption" : "move to dic",
+	    "command" : "move_to_dic"
+	},
+	{
+	    "id" : "lookupNaverDic",
+	    "caption" : "lookup naver dic",
+	    "command" : "lookup_naver_dic"
 	}
 ]
