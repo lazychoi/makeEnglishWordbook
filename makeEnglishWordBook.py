@@ -1,4 +1,4 @@
-import sublime, sublime_plugin, re, webbrowser
+import sublime, sublime_plugin, re, webbrowser, os
 
 def getKeyword(self, cursor):
 
@@ -97,9 +97,12 @@ class copyToDicCommand(sublime_plugin.TextCommand):
 		views = active_window.views()
 		dic_file_end = ""
 		for e in views:
-			file_name_plus_path = e.file_name()
-			pattern = re.compile("(\/.+\/)(.*)")
-			file_name = pattern.sub("\g<2>", file_name_plus_path)
+			file_name_plus_path = str(e.file_name())
+			file_name = ""
+			if os.name == 'posix':
+				file_name = re.sub("\/.+\/", "", file_name_plus_path)
+			else:
+				file_name = re.sub(r".+\\", "", file_name_plus_path)
 
 			if file_name == "eng_dic_data.txt":
 				dic_file_end = e.size()
@@ -125,9 +128,12 @@ class moveToDicCommand(sublime_plugin.TextCommand):
 		views = active_window.views()
 		dic_file_end = ""
 		for e in views:
-			file_name_plus_path = e.file_name()
-			pattern = re.compile("(\/.+\/)(.*)")
-			file_name = pattern.sub("\g<2>", file_name_plus_path)
+			file_name_plus_path = str(e.file_name())
+			file_name = ""
+			if os.name == 'posix':
+				file_name = re.sub("\/.+\/", "", file_name_plus_path)
+			else:
+				file_name = re.sub(r".+\\", "", file_name_plus_path)
 
 			if file_name == "eng_dic_data.txt":
 				active_window.focus_view(e)
@@ -136,6 +142,7 @@ class moveToDicCommand(sublime_plugin.TextCommand):
 				if e.find(keyword, 0):
 					vector = e.text_to_layout(keyword_position.a)
 					e.set_viewport_position(vector)
+					e.sel().clear()
 					e.sel().add(e.line(keyword_position))
 				else:
 					sublime.message_dialog("찾는 단어가 없습니다.\n The keyword is not found.")
