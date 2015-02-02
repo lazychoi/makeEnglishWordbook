@@ -219,7 +219,8 @@ class insertSentenceWithHighlightKeywordCommand(sublime_plugin.TextCommand):
 	def run(self, edit, keyword, begin, end, show_matches_to_quick_panel, index):
 
 		# split sentence into words
-		words = show_matches_to_quick_panel[index].split()
+		pattern = "(\W)"
+		words = re.split(pattern, show_matches_to_quick_panel[index])
 
 		# if word is equal to keyword, it is enclosed by html tag
 		sentence = []
@@ -229,7 +230,7 @@ class insertSentenceWithHighlightKeywordCommand(sublime_plugin.TextCommand):
 				sentence.append(e)
 			else:
 				sentence.append(e)
-		sentence = str(' '.join(sentence))
+		sentence = "".join(sentence)
 
 		self.view.replace(edit, sublime.Region(begin, end), sentence)
 
@@ -263,7 +264,8 @@ class insertSentenceWithUnderlineCommand(sublime_plugin.TextCommand):
 	def run(self, edit, keyword, begin, end, show_matches_to_quick_panel, index):
 
 		# split sentence into words
-		words = show_matches_to_quick_panel[index].split()
+		pattern = "(\W)"
+		words = re.split(pattern, show_matches_to_quick_panel[index])
 
 		# if word is equal to keyword, it is enclosed by html tag
 		sentence = []
@@ -273,6 +275,6 @@ class insertSentenceWithUnderlineCommand(sublime_plugin.TextCommand):
 				sentence.append(e)
 			else:
 				sentence.append(e)
-		sentence = str(' '.join(sentence))
+		sentence = ''.join(sentence)
 
 		self.view.replace(edit, sublime.Region(begin, end), sentence)
