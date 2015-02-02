@@ -12,4 +12,8 @@ This plugin has three functions.
 
 - [shift+super+m] : You can move to the source definition when you change dictionary file.
 
+- [shift + super + k] : You can lookup the word in Naver dictionary.
+
+- [shift + super + l] : You can copy sentence which contain keyword to the end of the line in wordbook.
+
 Windows users have to use alt key for super.

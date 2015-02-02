@@ -18,5 +18,20 @@
 	    "id" : "lookupNaverDic",
 	    "caption" : "lookup naver dic",
 	    "command" : "lookup_naver_dic"
+	},
+	{
+	    "id" : "copySentence",
+	    "caption" : "copy sentence",
+	    "command" : "copy_sentence"
+	},
+	{
+	    "id" : "copySentenceWithHighlightKeyword",
+	    "caption" : "copy sentence with highlighted Keyword",
+	    "command" : "copy_sentence_with_highlight_keyword"
+	},
+	{
+	    "id" : "copySentenceWithUnderline",
+	    "caption" : "copy sentence with underline",
+	    "command" : "copy_sentence_with_underline"
 	}
 ]

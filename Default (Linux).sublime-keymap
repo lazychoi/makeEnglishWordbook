@@ -10,5 +10,14 @@
 	}, 
 	{
 		"keys": ["shift+alt+k"], "command": "lookup_naver_dic"
+	}, 
+	{
+		"keys": ["shift+alt+l"], "command": "copy_sentence"
+	}, 
+	{
+		"keys": ["shift+alt+;"], "command": "copy_sentence_with_highlight_keyword"
+	}, 
+	{
+		"keys": ["shift+alt+'"], "command": "copy_sentence_with_underline"
 	}
 ]
