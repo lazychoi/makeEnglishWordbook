@@ -12,12 +12,12 @@
 		"keys": ["shift+super+k"], "command": "lookup_naver_dic"
 	}, 
 	{
-		"keys": ["shift+super+l"], "command": "copy_sentence"
+		"keys": ["shift+super+o"], "command": "copy_sentence"
 	}, 
 	{
-		"keys": ["shift+super+;"], "command": "copy_sentence_with_highlight_keyword"
+		"keys": ["shift+super+h"], "command": "copy_sentence_with_highlight_keyword"
 	}, 
 	{
-		"keys": ["shift+super+'"], "command": "copy_sentence_with_underline"
+		"keys": ["shift+super+u"], "command": "copy_sentence_with_underline"
 	}
 ]
