@@ -33,5 +33,10 @@
 	    "id" : "copySentenceWithUnderline",
 	    "caption" : "copy sentence with underline",
 	    "command" : "copy_sentence_with_underline"
+	},
+	{
+	    "id" : "copySentence",
+	    "caption" : "copy sentence",
+	    "command" : "copy_sentence"
 	}
 ]

@@ -36,11 +36,13 @@
 3. [shift + super + k] : 사전 파일에 단어 풀이가 없을 경우 이 키를 누르면 네이버사전이 뜹니다. 복사한 후 단어장에 입력합니다. (인터넷이 연결되어 있어야 합니다.)
 4. [shift + super + i] : 사전 파일에 단어 풀이를 추가합니다. 
 
-아래 세 기능은 단어가 포함된 문장을 복사하는 기능입니다. 따라서 텍스트 파일로 된 원서가 있을 경우 사용합니다. 한 줄 전체를 불러오니 문장별로 나눠두어야 합니다.
+아래 세 기능은 단어가 포함된 문장을 복사하는 기능입니다. 따라서 텍스트 파일로 된 원서가 있을 경우 사용합니다. 한 줄 전체를 불러오니 문장별로 나눠두어야 합니다. 아래 기능은 한 단어에서만 작동합니다. "get up"과 같은 두 단어 이상, "can't", "half-blood"처럼 문장부호가 단어 사이에 들어간 것에는 작동하지 않습니다.
 
 5. [shift + super + o] : 단어가 포함된 문장을 커서가 있는 줄의 맨 끝에 입력합니다.
 6. [shift + super + h] : 단어가 포함된 문장을 불러오는데 단어를 빨간색으로 진하게 강조합니다. 단어를 암기할 때 문맥을 활용할 수 있을 것입니다.
 7. [shift + super + u] : 단어가 포함된 문장을 불러오는데 단어를 밑줄로 바꿉니다. 단어 시험을 볼 때 유용하게 사용할 수 있을 것입니다.
+
+8. [shift + super + ;] : 6번, 7번 기능을 한 번에 실행합니다.
 
 ## 설치 방법
 
@@ -69,5 +71,7 @@ This plugin has seven functions.
 6. [shift + super + h] : You can copy sentence which contains keyword to the keyword position in wordbook with highlighting html tag.
 
 7. [shift + super + u] : You can copy sentence which contains keyword to the keyword position in wordbook with converting keyword into blank.
+
+8. [shift + super + ;] : This key performs 6th and 7th funtions at once.
 
 Windows users have to use alt key for super.

@@ -19,5 +19,8 @@
 	}, 
 	{
 		"keys": ["shift+super+u"], "command": "copy_sentence_with_underline"
+	}, 
+	{
+		"keys": ["shift+super+;"], "command": "copy_sentence"
 	}
 ]

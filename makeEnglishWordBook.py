@@ -225,7 +225,7 @@ class insertSentenceWithHighlightKeywordCommand(sublime_plugin.TextCommand):
 		# if word is equal to keyword, it is enclosed by html tag
 		sentence = []
 		for e in words:
-			if e == keyword:
+			if e.lower() == keyword.lower():
 				e = '<font color = "red"><b>' + e + '</b></font>'
 				sentence.append(e)
 			else:
@@ -270,11 +270,67 @@ class insertSentenceWithUnderlineCommand(sublime_plugin.TextCommand):
 		# if word is equal to keyword, it is enclosed by html tag
 		sentence = []
 		for e in words:
-			if e == keyword:
+			if e.lower() == keyword.lower():
 				e = '__________'
 				sentence.append(e)
 			else:
 				sentence.append(e)
 		sentence = ''.join(sentence)
+
+		self.view.replace(edit, sublime.Region(begin, end), sentence)
+
+class copySentenceCommand(sublime_plugin.TextCommand):
+
+	def run(self, edit):
+
+		def copy_sentences(index):
+			
+			if(index > -1):
+				self.view.run_command("copy_sentence_with_highlight_underline",{"keyword": word_s, "begin": begin, "end": end, "show_matches_to_quick_panel": matched_result, "index": index})
+
+		# region at cursor
+		cursor_position = self.view.sel()[0]
+
+		word_s, current_line_string, current_line_region, begin, end = getKeyword(self, cursor_position)
+
+		# searching word_s in current window
+		# save to show_matches_to_quick_panel
+		matched_result = uniq(opendFileSearch(word_s))
+
+		# display words in the begining of each line
+		show_matches_to_quick_panel = []
+		for e in matched_result:
+			show_matches_to_quick_panel.append(e[0:100])
+
+		# show quick panel including matching words
+		sublime.active_window().show_quick_panel(show_matches_to_quick_panel, copy_sentences)
+
+class copySentenceWithHighlightUnderlineCommand(sublime_plugin.TextCommand):
+	def run(self, edit, keyword, begin, end, show_matches_to_quick_panel, index):
+
+		# split sentence into words
+		pattern = "(\W)"
+		words = re.split(pattern, show_matches_to_quick_panel[index])
+
+		sentence_highlight = []
+		for e in words:
+			if e.lower() == keyword.lower():
+				e = '<font color = "red"><b>' + e + '</b></font>'
+				sentence_highlight.append(e)
+			else:
+				sentence_highlight.append(e)
+		sentence_highlight = "".join(sentence_highlight)
+
+		# if word is equal to keyword, it is enclosed by html tag
+		sentence_underline = []
+		for e in words:
+			if e.lower() == keyword.lower():
+				e = '__________'
+				sentence_underline.append(e)
+			else:
+				sentence_underline.append(e)
+		sentence_underline = ''.join(sentence_underline)
+
+		sentence = sentence_highlight + '\t' + sentence_underline
 
 		self.view.replace(edit, sublime.Region(begin, end), sentence)
